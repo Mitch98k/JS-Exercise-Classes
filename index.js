@@ -133,11 +133,14 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian{
-  constructor(instruct) {
-    super(instruct);
-    this.speciality = instruct.speciality,
-    this.favLanguage = instruct.favLanguage,
-    this.catchPhrase = instruct.catchPhrase
+  constructor(info) {
+    super(info);
+    this.name = info.name,
+    this.age = info.age,
+    this.location = info.location,
+    this.speciality = info.speciality,
+    this.favLanguage = info.favLanguage,
+    this.catchPhrase = info.catchPhrase
   }
   demo(subject) {
     return `Today we are learning about ${subject}`
@@ -164,13 +167,19 @@ class Instructor extends Lambdasian{
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian{
-  constructor(student) {
-    super(student);
-    this.previousBackground = student.previousBackground,
-    this.className = student.className,
-    this.favSubjects = student.favSubjects
+  constructor(info) {
+    super(info);
+    this.name = info.name,
+    this.age = info.age,
+    this.location = info.location,
+    this.speciality = info.speciality,
+    this.favLanguage = info.favLanguage,
+    this.catchPhrase = info.catchPhrase,
+    this.previousBackground = info.previousBackground,
+    this.className = info.className,
+    this.favSubjects = info.favSubjects
   }
-  listSubjects(favSubjects) {
+  listSubjects() {
     return this.favSubjects.toString()
   }
 }
@@ -189,17 +198,25 @@ class Student extends Lambdasian{
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 class ProjectManager extends Instructor{
-  constructor(PM){
-    super(PM);
-    this.gradClassName = PM.gradClassName,
-    this.favInstructor = PM.favInstructor
+  constructor(info){
+    super(info);
+    this.name = info.name,
+    this.age = info.age,
+    this.location = info.location,
+    this.speciality = info.speciality,
+    this.favLanguage = info.favLanguage,
+    this.catchPhrase = info.catchPhrase,
+    this.previousBackground = info.previousBackground,
+    this.className = info.className,
+    this.favSubjects = info.favSubjects,
+    this.gradClassName = info.gradClassName,
+    this.favInstructor = info.favInstructor
   }
-  standUp(channel, name){
+  standUp(channel){
     return `${this.name} announces to ${channel}, @channel standy times!`
   }
   debugsCode(student, subject) {
-    this.name = student.name
-    return `${name} debugs %{student.name}'s code on ${subject}`
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
   }
 }
 
