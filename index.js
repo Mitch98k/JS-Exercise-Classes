@@ -41,8 +41,25 @@ class Airplane {
 */
 
 class Person {
-
-}
+  constructor(name, age) {
+    this.name = name,
+    this.age = age,
+    this.stomach = []
+  }; // ends constructor
+  eat(someFood) {
+    if (this.stomach.length < 10){
+      this.stomach.push(someFood);
+    }; // ends if statement
+  }; // ends eat
+poop() {
+  if (this.stomach.length >= 10){
+    this.stomach.length = 0;
+  }; // end if statement
+}; // ends poop
+toString() {
+  return `${this.name}, ${this.age}`;
+}; // ends return
+} // ends person
 
 /*
   TASK 2
@@ -59,7 +76,23 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon) {
+    this.model = model,
+    this.milesPerGallon = milesPerGallon,
+    this.tank = 0,
+    this.odometer = 0
+  }
+  fill(gallons) {
+    this.tank += gallons;
+  }
+  drive(distance) {
+    this.tank -= (distance / this.milesPerGallon);
+    this.odometer = distance;
+    if (this.tank < 1) {
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer - 1} miles!`;
+    }
+  }
 }
 
 /*
@@ -75,7 +108,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(info) {
+    this.name = info.name,
+    this.age = info.age,
+    this.location = info.location
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
 
 /*
@@ -92,8 +132,20 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(instruct) {
+    super(instruct);
+    this.speciality = instruct.speciality,
+    this.favLanguage = instruct.favLanguage,
+    this.catchPhrase = instruct.catchPhrase
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`
+  }
+  grade(student, subject) {
+    this.name = student.name
+    return `${student.name} recieves a perfect score on ${subject}`
+  }
 }
 
 /*
